@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Object Oriented Concepts</title>
+        <link rel="stylesheet" href="technicaldoc.css">
+    </head>
+    <body>
+        <nav id="navbar">
+            <header id="topic">Object Oriented Concepts</header>
+            <a href="#introduction" class="nav-link"><button>Introduction</button></a>
+            <a href="#core_concepts_of_ooc" class="nav-link"><button>Core Concepts of OOC</button></a>
+            <a href="#class"><button class="sub">Class</button></a>
+            <a href="#object"><button class="sub">Object</button></a>
+            <a href="#abstraction"><button class="sub">Abstraction</button></a>
+            <a href="#encapsulation"><button class="sub">Encapsulation</button></a>
+            <a href="#inheritance"><button class="sub">Inheritance</button></a>
+            <a href="#polymorphism"><button class="sub">Polymorphism</button></a>
+            <a href="#access_modifiers"><button class="sub">Access Modifiers</button></a>
+            <a href="#relationships_in_ooc" class="nav-link"><button>Relationships in OOC</button></a>
+            <a href="#benefits_of_ooc" class="nav-link"><button>Benefits of OOC</button></a>
+            <a href="#applications_of_ooc" class="nav-link"><button>Applications of OOC</button></a>
+            <a href="#conclusion" class="nav-link"><button>Conclusion</button></a>
+        </nav>
+        <main id="main-doc">
+            <section class="main-section" id="introduction">
+                <header class="head">Introduction</header>
+                <p class="text">Object-Oriented Concepts (OOC) form the basis of Object-Oriented Programming (OOP), a paradigm that organizes software design around data (objects) rather than functions and logic. Objects are instances of classes, which define the structure and behavior of data. It encapsulates data and methods within objects and maintains code reusability, maintainability, and modularity.</p>
+            </section>
+            <section class="main-section" id="core_concepts_of_ooc">
+                <header class="head">Core Concepts of OOC</header>
+                <p class="sub-head" id="class">Class</p>
+                <p class="text">In Object-Oriented Concepts (OOC), a class is a blueprint, plan, or template used to create objects. It provides a simple yet powerful structure for defining the properties and behaviors that objects will possess. Classes can be categorized into different types: a base class (or root class) represents a generalized structure, while a subclass is a class that inherits from one or more base classes. The class from which another class inherits is referred to as the superclass or parent class.</p>
+                <p class="sub-head" id="object">Object</p>
+                <p class="text">An object is the basic unit of OOC and serves as a real-world instance of a class. Each object has its own state (represented by attributes or properties), behavior (defined through methods or functions), and identity. Objects contain both data and the code required to manipulate that data. They allow programs to access variables and methods defined inside their class without exposing the internal implementation. Objects can interact with one another seamlessly, without needing to know the specific details of each other’s data or logic, enabling abstraction and modular design.</p>
+                <p class="sub-head" id="abstraction">Abstraction</p>
+                <p class="text">Abstraction in object-oriented concepts focuses on exposing only the essential details of an object while hiding the underlying complexity. It allows users to interact with an object without needing to understand its internal workings. For example, when you want to switch on the television, it is not necessary to know the inner circuit to switch on the TV. Whatever is required will be shown by using an abstract class.</p>
+                <div class="code-text">
+                    <pre>
+<code>
+    class RemoteControl {
+      public:
+        virtual void powerOn() = 0; // Pure virtual function
+    };
+
+    class TV : public RemoteControl {
+      public:
+        void powerOn() override {
+          cout << "TV is now ON" << endl;
+        }
+    };
+
+    int main() {
+      RemoteControl* rc = new TV();
+      rc->powerOn();
+      delete rc;
+      return 0;
+    }</code>
+                    </pre>
+                </div>
+                <p class="sub-head" id="encapsulation">Encapsulation</p>
+                <p class="text">Wrapping up the data (attributes) and methods (behavior) inside a class to maintain modularity. It binds together code and the data it manipulates, hiding the data from other classes. Variables or data of a class are hidden from any other class and can be accessed only through any member function of their class in which they are declared (data-hiding).</p>
+                <div class="code-text">
+                    <pre>
+<code>
+    class BankAccount {
+      private:
+        double balance;
+
+      public:
+        BankAccount(double initialBalance) {
+          balance = initialBalance;
+        }
+
+        void deposit(double amount) {
+          if (amount > 0) balance += amount;
+        }
+
+        double getBalance() {
+          return balance;
+        }
+    };</code>
+                    </pre>
+                </div>
+                <p class="sub-head" id="inheritance">Inheritance</p>
+                <p class="text">Inheritance increases code reusability and modularity by allowing one class to inherit common properties and behaviors from a parent (base) class. This simplifies and organizes the program structure by defining shared attributes and functions in a base class, which can then be extended by more specialized classes. As a result, one class can share the structure and behavior defined in another, reducing code redundancy and enabling efficient reuse of tested, reliable code components.</p>
+                <div class="code-text">
+                    <pre>
+                        <code>
+    class Animal {
+      public:
+        void sound() {
+          cout << "Animal makes a sound" << endl;
+        }
+    };
+
+    class Dog : public Animal {
+      public:
+        void bark() {
+          cout << "Dog barks" << endl;
+        }
+    };</code>
+                    </pre>
+                </div>
+                <p class="text">Types of Inheritance:</p>
+                <ul>
+                    <li class="ul-text">Single Inheritance - A child class inherits from a single parent class i.e. classes have only one base class.</li>
+                    <li class="ul-text">Multiple Inheritance - A child class inherits from two or more parent class.</li>
+                    <li class="ul-text">Multilevel Inheritance - A child class inherits from another child class, forming a chain</li>
+                    <li class="ul-text">Hierarchical Inheritance - Multiple child classes inherit from a single parent class. The parent class serves as a common base class for multiple child classes</li>
+                    <li class="ul-text">Hybrid inheritance - Hybrid inheritance is a combination of two or more types of inheritances</li>
+                </ul>
+                <p class="sub-head" id="polymorphism">Polymorphism</p>
+                <p class="text">Derived from the greek words “poly: many” and “morph: forms”, polymorphism refers to “many forms” which refers to the ability of a single function, operator or object to take different forms based on the context</p>
+                <div class="code-text">
+                    <pre>
+                        <code>
+    class Shape {
+      public:
+        virtual void draw() {
+          cout << "Drawing Shape" << endl;
+        }
+    };
+
+    class Circle : public Shape {
+      public:
+        void draw() override {
+          cout << "Drawing Circle" << endl;
+        }
+    };
+
+    void display(Shape* s) {
+      s->draw();
+    }</code>
+                    </pre>
+                </div>
+                <p class="sub-head" id="access_modifiers">Access Modifiers</p>
+                <p class="text">Access Modifiers in OOP control visibility and accessibility of classes, methods, variables and members. They help in enforcing encapsulation by defining how the internal elements of a class can be accessed. There are three types of access modifiers:</p>
+                <p class="text">Private: accessible only within the class where they are defined (default in C++)</p>
+                <div class="code-text">
+                    <pre>
+                        <code>
+    class MyClass {
+      private: int x;
+        void MyFunction()
+    };
+
+    int main() {
+      MyClass myobj;
+      myobj.x=5;    //Displays error
+      return 0;
+    }</code>
+                    </pre>
+                </div>
+                <p class="text">Public: accessible from anywhere in the program.</p>
+                <div class="code-text">
+                    <pre>
+                        <code>
+    class MyClass {
+      public: int x;
+        void MyFunction()
+    };
+
+    int main() {
+      MyClass myobj;
+      myobj.x=5;
+      return 0;
+    }</code>
+                    </pre>
+                </div>
+                <p class="text">Protected: accessible within the sub-class, even if they are in different classes.</p>
+                <div class="code-text">
+                    <pre>
+                        <code>
+    class BaseClass {
+      protected: int x, y;
+    };
+
+    class DerivedClass: public BaseClass {
+      public: void MyFunction1()
+              { x=10; }
+    };
+
+    class nonDerived {
+      public: void MyFunction2()
+              { y=10; }
+    };
+
+    int main() {
+      BaseClass obj1;
+      obj1.x=5;
+      DerivedClass obj2;
+      obj2.MyFunction1();
+      nonDrived obj3;
+      obj3.MyFunction2();
+      return 0;
+    }</code>
+                    </pre>
+                </div>
+            </section>
+            <section class="main-section" id="relationships_in_ooc">
+                <header class="head">Relationships in OOC</header>
+                <ul>
+                    <li class="ul-text">Association: (uses-a relationship) a general connection between classes. E.g. library has books</li>
+                    <li class="ul-text">Aggregation: (has-a relationship) a “whole part” relation where parts can exist independently. E.g. a car has an engine</li>
+                    <li class="ul-text">Composition: (iff) a stronger form of aggregation and a “whole part” relation where parts cannot exist independently. E.g. car is composed of wheels</li>
+                    <li class="ul-text">Generalisation: (is–a relationship) inheritance where one class derives from another, subclass-superclass. E.g. a manager is a person</li>
+                    <li class="ul-text">Multiplicity: indicates the number of instances in a relationship</li>
+                        <ul>
+                            <li class="ul-text">1: one instance</li>
+                            <li class="ul-text">*: many instance</li>
+                            <li class="ul-text">1…*: at least one instance</li>
+                        </ul>
+                    <li class="ul-text">Dependency: (depends-on relationship) a class uses another class temporarily</li>
+                </ul>
+            </section>
+            <section class="main-section" id="benefits_of_ooc">
+                <header class="head">Benefits of OOC</header>
+                <ul>
+                    <li class="ul-text">Modularity: organizes code into self-contained classes. Developers can focus on one part of the system without affecting the entire codebase.</li>
+                    <li class="ul-text">Readability: the hierarchical organisation following parent child relationship improves the readability of the code making it easier to understand the data flow.</li>
+                    <li class="ul-text">Reusability: promoting the use of shared resources.</li>
+                    <li class="ul-text">Easy maintenance: teams can understand the code faster and maintain it with minimal errors, even if new developers join.</li>
+                    <li class="ul-text">Scalability: classes and objects can be added or extended without significantly disrupting the existing code.</li>
+                    <li class="ul-text">Flexibility: objects of different classes can be treated uniformly through a common interface.</li>
+                    <li class="ul-text">Maintenance: OOP's modular nature makes it easier to locate and fix bugs, add new features, or refactor code.</li>
+                </ul>
+            </section>
+            <section class="main-section" id="applications_of_ooc">
+                <header class="head">Applications of OOC</header>
+                <ul>
+                    <li class="ul-text">Desktop Software Development
+                        <ul>
+                            <li class="ul-text">Operating systems (e.g., Windows, macOS, Linux components)</li>
+                            <li class="ul-text">Productivity tools (e.g., Microsoft Office, Photoshop)</li>
+                            <li class="ul-text">Multimedia applications (e.g., video and audio editing software)</li>
+                        </ul>
+                    </li>
+                    <li class="ul-text">Web Development
+                        <ul>
+                            <li class="ul-text">Dynamic websites and web applications (e.g., e-commerce platforms, social media sites)</li>
+                            <li class="ul-text">Backend frameworks (e.g., Django, Flask, Spring)</li>
+                            <li class="ul-text">Content management systems (e.g., WordPress)</li>
+                        </ul>
+                    </li>
+                    <li class="ul-text">Mobile Application Development
+                        <ul type="dot">
+                            <li class="ul-text">Android apps (Java, Kotlin)</li>
+                            <li class="ul-text">iOS apps (Swift, Objective-C)</li>
+                            <li class="ul-text">Cross-platform apps (Flutter, React Native)</li>
+                        </ul>
+                    </li>
+                    <li class="ul-text">Game Development
+                        <ul type="dot">
+                            <li class="ul-text">Video games (e.g., Unity, Unreal Engine)</li>
+                            <li class="ul-text">Simulations (e.g., VR environments, training tools)</li>
+                        </ul>
+                    </li>
+                    <li class="ul-text">Data Science and Machine Learning
+                        <ul type="dot">
+                            <li class="ul-text">Building data analysis pipelines (e.g., Pandas, NumPy in Python)</li>
+                            <li class="ul-text">Training and deploying machine learning models (e.g., TensorFlow, Scikit-learn)</li>
+                        </ul>
+                    </li>
+                    <li class="ul-text">Database Management
+                        <ul type="dot">
+                            <li class="ul-text">Object-relational mapping (ORM) tools (e.g., Hibernate, SQLAlchemy)</li>
+                            <li class="ul-text">Custom database systems</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section class="main-section" id="conclusion">
+                <header class="head">Conclusion</header>
+                <p class="text">Object-Oriented Concepts are central to modern software engineering. Mastering encapsulation, abstraction, inheritance, and polymorphism leads to the development of clean, scalable, and maintainable codebases.</p>
+            </section>
+        </div>
+    </body>
+</html>
